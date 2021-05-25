@@ -15,7 +15,7 @@
     <description>Ecommerce</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>13</java.version>
     </properties>
 
     <dependencies>
@@ -75,6 +75,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
         </dependency>
 
         <!--flywaydb-->
@@ -225,6 +226,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version> <configuration> <release>13</release>
+            </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

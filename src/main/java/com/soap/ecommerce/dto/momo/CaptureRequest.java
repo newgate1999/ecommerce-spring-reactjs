@@ -11,8 +11,6 @@ import java.util.Objects;
 
 @Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class CaptureRequest {
 
     @NotBlank

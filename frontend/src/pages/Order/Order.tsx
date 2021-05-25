@@ -29,7 +29,8 @@ const Order: FC = () => {
     const [phoneNumber, setPhoneNumber] = useState<string | undefined>(usersData.phoneNumber);
     const [email, setEmail] = useState<string | undefined>(usersData.email);
     const [validateEmailError, setValidateEmailError] = useState<string>("");
-
+    const [checkedPayment, setCheckedPayment] = useState<boolean>(false);
+    const [url, setUrl] = useState<string>("");
     const {
         firstNameError,
         lastNameError,
@@ -44,7 +45,7 @@ const Order: FC = () => {
         dispatch(fetchOrder());
     }, []);
 
-    const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    const onFormSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
 
         const perfumesId = Object.fromEntries(new Map(JSON.parse(localStorage.getItem("perfumes") as string)));
@@ -53,9 +54,11 @@ const Order: FC = () => {
         if (validateEmailError) {
             setValidateEmailError(validateEmailError);
         } else {
+            setCheckedPayment(true);
             setValidateEmailError("");
             const order = {firstName, lastName, city, address, postIndex, phoneNumber, email, perfumesId, totalPrice};
-            dispatch(addOrder(order, history));
+            let paymentUrl: any = await dispatch(addOrder(order, history));
+            setUrl(paymentUrl.data);
         }
     };
 
@@ -195,6 +198,7 @@ const Order: FC = () => {
                         <div className="row">
                             <h4>Thành tiền : $ <span>{totalPrice}</span>.00</h4>
                         </div>
+                        {url && <a href={ url ? url: ''} >Thanh Toan</a>}
                     </div>
                 </div>
             </form>

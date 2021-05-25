@@ -67,6 +67,16 @@ export type Order = {
     orderItems: Array<OrderItem>
 };
 
+export type Payment = {
+    orderId: string,
+    requestId: string,
+    orderInfo: string,
+    returnUrl: string,
+    notifyUrl: string,
+    extraData: string,
+    amount: number
+}
+
 export type OrderItem = {
     id: number
     amount: number

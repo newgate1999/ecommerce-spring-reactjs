@@ -33,6 +33,7 @@ const reducer = (state: InitialStateType = initialState, action: OrderActionType
             return {...state, errors: {}, loading: false};
 
         case ORDER_ADDED_SUCCESS:
+            console.log('Log payload' + action.payload);
             return {...state, order: action.payload, loading: false};
 
         case ORDER_ADDED_FAILURE:
