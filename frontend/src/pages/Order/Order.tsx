@@ -1,7 +1,7 @@
 import React, {FC, FormEvent, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheckCircle, faShoppingBag} from "@fortawesome/free-solid-svg-icons";
+import {faCheckCircle, faMoneyBill, faShoppingBag} from "@fortawesome/free-solid-svg-icons";
 
 import {IMG_URL} from "../../utils/constants/url";
 import {addOrder, fetchOrder} from "../../redux/thunks/order-thunks";
@@ -168,6 +168,13 @@ const Order: FC = () => {
                                 <div className="invalid-feedback">{emailError || validateEmailError}</div>
                             </div>
                         </div>
+                        <div className="form-group row">
+                            <label className="col-sm-2 col-form-label"></label>
+                            <div className="col-sm-8">
+                                {url && <a className="btn btn-primary btn-lg btn-warning float-right" href={ url ? url: ''} >
+                                    <FontAwesomeIcon icon={faMoneyBill}/>Thanh toán</a>}
+                            </div>
+                        </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="container-fluid">
@@ -198,7 +205,6 @@ const Order: FC = () => {
                         <div className="row">
                             <h4>Thành tiền : $ <span>{totalPrice}</span>.00</h4>
                         </div>
-                        {url && <a href={ url ? url: ''} >Thanh Toan</a>}
                     </div>
                 </div>
             </form>

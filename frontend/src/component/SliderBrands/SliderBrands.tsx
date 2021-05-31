@@ -5,7 +5,7 @@ import "./SliderBrands.css";
 import {Link} from "react-router-dom";
 import {BrandType} from "../../types/types";
 
-const SliderBrands: FC = () => {
+const  SliderBrands: FC = () => {
     const settings = {
         controls: false,
         indicators: true
